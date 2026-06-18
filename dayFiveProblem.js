@@ -82,8 +82,10 @@ const memoize = (fn) => {
   let cache = {};
   return function (n) {
     if (n in cache) {
+      console.log(`result for cache: ${n}`);
       return cache[n];
     }
+    console.log(`result start calculation: ${n}`);
     let result = fn(n);
 
     cache[n] = result;
@@ -91,4 +93,5 @@ const memoize = (fn) => {
   };
 };
 const memoAdd = memoize((n) => n + 10);
+console.log(memoAdd(5));
 console.log(memoAdd(5));
